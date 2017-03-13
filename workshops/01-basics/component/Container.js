@@ -34,7 +34,7 @@ class Container extends React.Component {
         <div>
           <TypeNewList submitData={this.submitData}/>
           <ListBody data={this.state.data} onDelete={this.onDelete}/>
-          <ListSummary tottalNum={this.state.totalNum}/>
+          <ListSummary totalNum={this.state.totalNum}/>
         </div>
       );
     }

@@ -4,17 +4,25 @@
 import React from 'react';
 
 class ListSummary extends React.Component {
-    constructor(props) {
-      super(props)
-    }
+  constructor(props) {
+    super(props)
+  }
 
-    render() {
-      return (
-        <div>
-          {}
-        </div>
-      );
-    }
+  displaySummary() {
+    return (
+      <div>
+        <h3>there are {this.props.totalNum} things need to be done</h3>
+      </div>
+    )
+  }
+
+  render() {
+    return (
+      <div>
+        {this.displaySummary()}
+      </div>
+    );
+  }
 }
 
 export default ListSummary;
