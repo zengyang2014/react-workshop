@@ -12,6 +12,7 @@ class Container extends React.Component {
       super(props);
       this.state = {data:[], totalNum: 0};
       this.submitData = this.submitData.bind(this);
+      this.onDelete = this.onDelete.bind(this);
     }
 
     submitData(oneThing){
@@ -22,11 +23,17 @@ class Container extends React.Component {
       }
     }
 
+    onDelete(key) {
+      const dataClone = this.state.data;
+      dataClone.splice(key, 1);
+      this.setState({data: dataClone, totalNum: --this.state.totalNum});
+    }
+
     render() {
       return (
         <div>
           <TypeNewList submitData={this.submitData}/>
-          <ListBody data={this.state.data}/>
+          <ListBody data={this.state.data} onDelete={this.onDelete}/>
           <ListSummary tottalNum={this.state.totalNum}/>
         </div>
       );

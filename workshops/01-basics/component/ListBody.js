@@ -3,11 +3,15 @@
  */
 import React from 'react';
 
-class TypeNewList extends React.Component {
+class ListBody extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
+  handleDelete(e) {
+    this.props.onDelete(e.target.getAttribute('data-key'));
+  }
   displayList() {
     return (
       Object
@@ -15,7 +19,7 @@ class TypeNewList extends React.Component {
         .map((key) => (
           <div>
             <li>{this.props.data[key]}</li>
-            <button>delete</button>
+            <button data-key={key} onClick={this.handleDelete}>delete</button>
           </div>
         ))
     );
@@ -30,4 +34,4 @@ class TypeNewList extends React.Component {
   }
 }
 
-export default TypeNewList;
+export default ListBody;
