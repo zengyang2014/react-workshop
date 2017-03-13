@@ -9,15 +9,25 @@ import ListSummary from './ListSummary'
 
 class Container extends React.Component {
     constructor(props) {
-      super(props)
+      super(props);
+      this.state = {data:[], totalNum: 0};
+      this.submitData = this.submitData.bind(this);
+    }
+
+    submitData(oneThing){
+      if(oneThing !== '') {
+        const dataClone = this.state.data;
+        dataClone.push(oneThing);
+        this.setState({data: dataClone, totalNum: ++this.state.totalNum});
+      }
     }
 
     render() {
       return (
         <div>
-          <TypeNewList />
-          <ListBody />
-          <ListSummary />
+          <TypeNewList submitData={this.submitData}/>
+          <ListBody data={this.state.data}/>
+          <ListSummary tottalNum={this.state.totalNum}/>
         </div>
       );
     }

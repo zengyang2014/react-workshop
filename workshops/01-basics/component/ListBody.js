@@ -4,17 +4,30 @@
 import React from 'react';
 
 class TypeNewList extends React.Component {
-    constructor(props) {
-      super(props)
-    }
+  constructor(props) {
+    super(props)
+  }
 
-    render() {
-      return (
-        <ul id="todo-list">
-          {}
-        </ul>
-      );
-    }
+  displayList() {
+    return (
+      Object
+        .keys(this.props.data)
+        .map((key) => (
+          <div>
+            <li>{this.props.data[key]}</li>
+            <button>delete</button>
+          </div>
+        ))
+    );
+  }
+
+  render() {
+    return (
+      <ul id="todo-list">
+        {this.displayList()}
+      </ul>
+    );
+  }
 }
 
 export default TypeNewList;
